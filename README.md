@@ -1,5 +1,5 @@
 # 📊 Sales Analysis Project – AdventureWorks2025
-<img src="assets/SQL.jpg" width="" height="">
+<img src="assets/poster.jpg" width="" height="">
 ## 📌 Project Overview
 
 This project performs an end-to-end Sales Data Analysis using the AdventureWorks2025 database.
