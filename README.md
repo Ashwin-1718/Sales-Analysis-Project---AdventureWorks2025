@@ -1,223 +1,134 @@
 # 📊 Sales Analysis Project – AdventureWorks2025
-<img src="assets/poster.jpg" width="" height="">
+
+<p align="center">
+  <img src="assets/poster.jpg" alt="Project Banner" />
+</p>
+
+---
+
 ## 📌 Project Overview
 
-This project performs an end-to-end Sales Data Analysis using the AdventureWorks2025 database.
+This project presents an **end-to-end Sales Data Analysis** using the **AdventureWorks2025** database.
 
-The objective is to analyze business performance, identify revenue drivers, evaluate customer behavior, and generate actionable business insights using:
+The main objective is to analyze overall business performance, identify key revenue drivers, evaluate customer purchasing behavior, and generate actionable business insights using SQL and Python.
 
-- SQL Server (Data Extraction & Aggregation)
-- Python (Data Analysis & Visualization)
-
----
-
-## 🛠️ Tools & Technologies
-
-- SQL Server 2022
-- SQL (JOIN, GROUP BY, Aggregations, Window Functions)
-- Python
-- Pandas
-- Matplotlib
+The project simulates a real-world business intelligence workflow from database querying to insight generation and visualization.
 
 ---
 
-## 📂 Database Used
+## 🛠️ Tools & Technologies Used
 
-- AdventureWorks2025
-- Schemas Used:
-  - Sales
-  - Production
-  - Person
-
----
-
-# 📈 Analysis Tasks Performed
-
----
-
-## 1️⃣ Category Contribution Analysis
-
-**Business Question:**  
-Which product categories generate the most revenue?
-
-**SQL Approach:**
-- JOIN SalesOrderDetail → Product → ProductSubcategory → ProductCategory
-- GROUP BY Category
-- SUM(LineTotal)
-
-**Insight:**  
-Revenue is highly concentrated in major product categories (e.g., Bikes dominate overall sales).
+- **SQL Server 2022**
+- **T-SQL**
+  - JOINs
+  - GROUP BY
+  - Aggregations
+  - Window Functions
+  - CTEs
+- **Python**
+- **Pandas**
+- **Matplotlib**
+- **CSV Data Export**
 
 ---
 
-## 2️⃣ Best Selling Product per Category
+## 📂 Database Information
 
-**Business Question:**  
-Which product drives maximum revenue in each category?
+**Database Used:** AdventureWorks2025  
 
-**SQL Approach:**
-- GROUP BY Product
-- Used ROW_NUMBER() with PARTITION BY Category
-
-**Insight:**  
-Each category has a clear top-performing product contributing majority revenue.
+**Schemas Analyzed:**
+- `Sales`
+- `Production`
+- `Person`
 
 ---
 
-## 3️⃣ Monthly Sales Trend
+## 🔄 Project Workflow
 
-**Business Question:**  
-How are sales changing over time?
+### 1️⃣ Data Extraction (SQL Server)
+- Joined multiple schemas
+- Created KPI-driven aggregated datasets
+- Used Window Functions for ranking & contribution analysis
+- Generated revenue, customer, and product-level summaries
 
-**SQL Approach:**
-- Extract YEAR and MONTH from OrderDate
-- SUM(TotalDue)
+### 2️⃣ Data Export
+- Exported cleaned and structured data into CSV files
 
-**Python:**
-- Created Date column
-- Generated Line Chart
+### 3️⃣ Data Analysis (Python)
+- Loaded datasets using Pandas
+- Performed:
+  - Revenue trend analysis
+  - Customer segmentation
+  - Product performance evaluation
+  - Regional sales analysis
+  - Pareto (80/20) analysis
 
-**Insight:**  
-Sales show trend behavior with seasonal variations and growth patterns.
+### 4️⃣ Data Visualization
+- Time-series revenue charts
+- Category-wise revenue comparison
+- Customer spending distribution
+- Regional performance comparison
+- Top product contribution charts
 
----
-
-## 4️⃣ Year-over-Year Growth
-
-**Business Question:**  
-Is the business growing year by year?
-
-**SQL:**
-- GROUP BY Year
-- SUM(TotalDue)
-
-**Python:**
-```python
-df['YoY_%'] = df['TotalSales'].pct_change() * 100
-```
-
-**Insight:**  
-Business shows measurable annual growth with positive performance trends.
+### 5️⃣ Business Insight Generation
+Converted analytical findings into actionable business recommendations.
 
 ---
 
-## 5️⃣ Top 10 Customers
+## 📊 Key Business Insights
 
-**Business Question:**  
-Who are the most valuable customers?
-
-**SQL:**
-- GROUP BY CustomerID
-- ORDER BY TotalSales DESC
-- TOP 10
-
-**Insight:**  
-Revenue is concentrated among high-value customers.
+✔ Revenue is driven by a small number of flagship products  
+✔ Customer spending distribution is highly skewed  
+✔ Certain regions significantly outperform others  
+✔ A small percentage of products contribute to the majority of total revenue (Pareto Principle)  
+✔ The business shows a positive long-term revenue growth trend  
 
 ---
 
-## 6️⃣ Customer Segmentation
+## 📈 KPIs Analyzed
 
-**Business Question:**  
-How to classify customers based on spending?
-
-**Python:**
-```python
-df['Segment'] = pd.qcut(df['TotalSales'], q=3, labels=['Low','Medium','High'])
-```
-
-**Insight:**  
-Customers segmented into Low, Medium, and High spenders for targeted strategy.
+- Total Revenue
+- Revenue by Product Category
+- Revenue by Region
+- Customer Lifetime Value (CLV)
+- Top Performing Products
+- Sales Growth Rate
+- Contribution % Analysis
 
 ---
 
-## 7️⃣ Sales by Territory
+## 🎯 Business Impact
 
-**Business Question:**  
-Which regions perform best?
+This project demonstrates how structured SQL querying combined with Python-based analysis can:
 
-**SQL:**
-- JOIN SalesOrderHeader → SalesTerritory
-- GROUP BY Territory
-
-**Insight:**  
-Certain territories significantly outperform others.
+- Identify high-performing products
+- Detect revenue concentration risks
+- Support strategic decision-making
+- Improve customer targeting
+- Drive data-backed business growth
 
 ---
 
-## 8️⃣ Average Order Value (AOV)
+## 🚀 Learning Outcomes
 
-**Formula:**
-AOV = Total Revenue / Total Orders
-
-**Insight:**  
-Provides understanding of average transaction size and revenue efficiency.
-
----
-
-## 9️⃣ Product Performance Analysis
-
-**Business Question:**  
-Which products are underperforming?
-
-**SQL:**
-- Total sales per product
-- Identified Bottom 10 products
-
-**Insight:**  
-Low-performing products may require discounting, bundling, or discontinuation.
+- Advanced SQL JOIN & Aggregation Techniques  
+- Window Functions & Ranking Analysis  
+- KPI-Based Business Analytics  
+- Time Series Trend Analysis  
+- Customer Segmentation  
+- Pareto Principle Application  
+- Data Visualization Best Practices  
 
 ---
 
-## 🔟 Pareto Analysis (80/20 Rule)
-
-**Business Question:**  
-Do 20% of products generate 80% of revenue?
-
-**Python:**
-```python
-df['CumSales%'] = df['Sales'].cumsum() / df['Sales'].sum() * 100
-```
-
-**Insight:**  
-Revenue concentration observed in a small percentage of products.
-
----
-
-# 📊 Key Business Insights
-
-- Revenue is heavily driven by specific categories and flagship products.
-- Customer spending distribution is uneven.
-- Regional performance varies significantly.
-- A small percentage of products contribute majority of revenue.
-- Business shows positive growth trend over time.
-
----
-
-# 📌 Project Workflow
-
-1. Data Extraction using SQL Server
-2. Data Export to CSV
-3. Data Analysis using Pandas
-4. Visualization using Matplotlib
-5. Business Insight Generation
-
----
-
-# 🚀 Learning Outcomes
-
-- Advanced SQL JOIN & Aggregation
-- Window Functions
-- Business KPI Analysis
-- Time Series Trend Analysis
-- Customer Segmentation
-- Pareto Principle Application
-
----
-
-# 👨‍💻 Author
+## 👨‍💻 Author
 
 **Ashwin Yadav**  
-Integrated M.Sc. IT – Data Management, Analytics & Visual Insight
+Data Analyst  
+Grras IT Solutions  
 
 ---
+
+## ⭐ If You Found This Useful
+
+Give this repository a ⭐ and feel free to connect!
