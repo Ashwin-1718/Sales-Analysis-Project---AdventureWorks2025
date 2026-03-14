@@ -122,10 +122,11 @@ This project demonstrates how structured SQL querying combined with Python-based
 ---
 
 ## 👨‍💻 Author
+**Ashwin Yadav** <br>
+M.Sc. IT – Data Management, Analytics & Visual Insight <br>
+Gujarat University  
 
-**Ashwin Yadav**  
-Data Analyst  
-Grras IT Solutions  
+📌 Project developed during **Data Analytics Internship at Grras IT Solutions**
 
 ---
 
